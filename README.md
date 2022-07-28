@@ -4,7 +4,7 @@ This project is a web application that allows you to synchronize a [noCRM](https
 with a Salesforce account. You can map your lead fields and your sales pipeline step
 to Salesforce ones.
 
-/!\ DISCLAIMER : This project is a proof of concept and not meant to be used in production at this stage
+:warning: DISCLAIMER : This project is a proof of concept and not meant to be used in production at this stage
 
 ## What you need to test the app
 
@@ -25,14 +25,7 @@ Try it yourself !
 
 [![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/nocrm-io/salesforce-connector#main)
 
-### Environment
-
-Go to your app environment and set up the following variables:
-
-- `SALESFORCE_CONSUMER_KEY`
-- `SALESFORCE_CONSUMER_SECRET`
-
-with your own Salesforce API credentials
+:warning: Small step to get the app running, go to your app environment and change `mysql://` to `mysql2://` in the  `SCALINGO_MYSQL_URL` variable and re-deploy
 
 ## Development instructions
 
