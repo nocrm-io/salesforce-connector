@@ -22,5 +22,11 @@
       "value": "Paste your Salesforce appconsumer secret here"
     }
   },
-  "addons": ["redis", "mysql"]
+  "addons": ["redis", "mysql"],
+  "formation": {
+    "web": {
+      "amount": 1,
+      "size": "S"
+    }
+  }
 }
