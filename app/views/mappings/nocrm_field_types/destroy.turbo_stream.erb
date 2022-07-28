@@ -1,0 +1,11 @@
+<%= turbo_stream.replace "live_salesforce_objects" do %>
+  <%= render partial: "live_salesforce_objects", locals: { new_mapped_field: @new_mapped_field} %>
+<% end %>
+
+<%= turbo_stream.remove @mapping %>
+
+<% if Mapping.count.zero? %>
+  <%= turbo_stream.replace "mapped_fields_and_attributes" do %>
+    <%= render partial: "field_list", locals: { mapping: @mapping} %>
+  <% end %>
+<% end %>

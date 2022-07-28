@@ -1,0 +1,84 @@
+<%= turbo_frame_tag webhook_event, class: "divTableRow" do %>
+  <div class="divTableCell"><%= webhook_event.id %></div>
+  <div class="divTableCell">
+    <% if webhook_event.status_error? %>
+      <div class="w-2 h-2 rounded-circle bg-danger anim-ping ping-danger me-5 flex-shrink-0"></div>
+    <% elsif webhook_event.status_pending? %>
+      <div class="w-2 h-2 rounded-circle bg-gray me-5 flex-shrink-0"></div>
+    <% elsif webhook_event.status_processing? %>
+      <div class="w-2 h-2 rounded-circle bg-warning anim-ping ping-warning me-5 flex-shrink-0"></div>
+    <% else %>
+      <div class="w-2 h-2 rounded-circle bg-success me-5 flex-shrink-0"></div>
+    <% end %>
+  </div>
+  <div class="divTableCell">
+    <% webhook_event.result.each do |object_type, result| %>
+      <span class="me-2">
+        <% fa_icon_css = "fa-circle-check fa-solid text-success" if result['status'] == 'success' %>
+        <% fa_icon_css = "fa-empty-set fa-solid text-muted" if result['status'] == 'skipped' %>
+        <% fa_icon_css = "fa-circle-exclamation fa-solid text-danger" if result['status'] == 'error' %>
+        <i class="fas <%= fa_icon_css %>"></i>
+        <%= object_type %>
+      </span>
+    <% end rescue nil %>
+  </div>
+  <div class="divTableCell">
+    <button type="button" class="btn btn-link fs-7 px-0 text-blue-700 text-decoration-none ms-auto text-nowrap" data-bs-toggle="modal" data-bs-target="#<%= dom_id(webhook_event, 'paramsModal') %>">
+      <i class="fas fa-eye me-2"></i>
+      See params
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="<%= dom_id(webhook_event, 'resultModal') %>" tabindex="-1" aria-labelledby="<%= dom_id(webhook_event, 'resultModal') %>Label" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="<%= dom_id(webhook_event, 'resultModal') %>Label">Webhook Event <%= webhook_event.id %> result</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <code>
+              <pre><%= JSON.pretty_generate(webhook_event.result) %></pre>
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="divTableCell">
+    <button type="button" class="btn btn-link fs-7 px-0 text-blue-700 text-decoration-none ms-auto text-nowrap" data-bs-toggle="modal" data-bs-target="#<%= dom_id(webhook_event, 'resultModal') %>">
+      <i class="fas fa-eye me-2"></i>
+      See result
+    </button>
+    <!-- Modal -->
+    <div class="modal fade" id="<%= dom_id(webhook_event, 'paramsModal') %>" tabindex="-1" aria-labelledby="<%= dom_id(webhook_event, 'paramsModal') %>Label" aria-hidden="true">
+      <div class="modal-dialog modal-xl">
+        <div class="modal-content">
+          <div class="modal-header">
+            <h5 class="modal-title" id="<%= dom_id(webhook_event, 'paramsModal') %>Label">Webhook Event <%= webhook_event.id %> params</h5>
+            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+          </div>
+          <div class="modal-body">
+            <code>
+              <pre><%= JSON.pretty_generate(webhook_event.data) %></pre>
+            </code>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <%= tag.div class: 'divTableCell text-nowrap', data: { controller: "tooltip", tooltip_options_value: { title: webhook_event.updated_at.to_formatted_s(:short) + " UTC" } } do %>
+    <%= time_ago_in_words(webhook_event.updated_at) %> ago
+  <% end %>
+  <div class="divTableCell">
+    <% if webhook_event.status_error? %>
+      <%= button_to reprocess_webhook_event_path(webhook_event), method: :put, class: "btn btn-danger fs-7 d-flex align-items-center" do %>
+        <span class="show-when-enabled"><i class="fas fa-arrows-rotate me-2"></i>Reprocess</span>
+        <span class="show-when-disabled"><i class="fas fa-arrows-rotate fa-spin me-2"></i>Reprocessing...</span>
+      <% end %>
+    <% else %>
+      <div class="btn btn-light fs-7 d-inline-flex align-items-center cursor-not-allowed">
+        <i class="fas fa-arrows-rotate me-2"></i>Reprocess
+      </div>
+    <% end %>
+  </div>
+<% end %>

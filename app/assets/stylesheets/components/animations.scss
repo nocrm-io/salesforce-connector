@@ -1,0 +1,102 @@
+.animated {
+  -webkit-animation-duration: 0.150s;
+  animation-duration: 0.150s;
+  -webkit-animation-fill-mode: both;
+  animation-fill-mode: both;
+  transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+@-webkit-keyframes fadeIn {
+  from {
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+    opacity: 0;
+  }
+
+  to {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+    opacity: 1;
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+    opacity: 0;
+  }
+
+  to {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+    opacity: 1;
+  }
+}
+
+.fadeIn {
+  -webkit-animation-name: fadeIn;
+  animation-name: fadeIn;
+}
+
+@-webkit-keyframes fadeOut {
+  from {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+  }
+}
+
+@keyframes fadeOut {
+  from {
+    --transform-scale-x: 1;
+    --transform-scale-y: 1;
+    opacity: 1;
+  }
+
+  to {
+    opacity: 0;
+    --transform-scale-x: .95;
+    --transform-scale-y: .95;
+  }
+}
+
+.fadeOut {
+  -webkit-animation-name: fadeOut;
+  animation-name: fadeOut;
+}
+
+@each $color, $hex in $theme-colors {
+  .anim-ping.ping-#{$color} {
+    animation: ping-#{$color} 1s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+
+  @keyframes ping-#{$color}
+  {
+    0% {
+      box-shadow: 0 0 0 0px rgba($hex, 0.75);
+    }
+    100% {
+      box-shadow: 0 0 0 12px rgba($hex, 0);
+    }
+  }
+}
+
+.anim-pulse	{
+  animation: pulse .25s cubic-bezier(0.4, 0, 0.6, 1) 4;
+}
+
+@keyframes pulse {
+  0%, 100% {
+    opacity: 1;
+  }
+  50% {
+    opacity: .5;
+  }
+}

@@ -1,0 +1,122 @@
+<div class="container">
+  <div class="heading pt-5 pb-4">
+    <h1>Data Mapping</h1>
+    <p>Map data between your noCRM and SaleForce accounts.</p>
+  </div>
+</div>
+
+<div class="container py-5">
+  <ul class="nav nav-tabs bg-white shadow-sm rounded-3 border-bottom" id="myTab" role="tablist">
+    <li class="nav-item col-6 text-center" role="presentation">
+      <button class="nav-link active" id="pipeline-steps-tab" data-bs-toggle="tab" data-bs-target="#pipeline-steps" type="button" role="tab" aria-controls="pipeline-steps" aria-selected="true">Pipeline Steps</button>
+    </li>
+    <li class="nav-item col-6 text-center" role="presentation">
+      <button class="nav-link" id="fields-tab" data-bs-toggle="tab" data-bs-target="#fields" type="button" role="tab" aria-controls="fields" aria-selected="false">Fields</button>
+    </li>
+  </ul>
+  <div class="tab-content" id="myTabContent">
+    <div class="tab-pane fade show active pt-5" id="pipeline-steps" role="tabpanel" aria-labelledby="pipeline-steps-tab">
+      <div class="py-2">
+        <div class="shadow-sm bg-white rounded-3 col-12 px-5 py-3 d-flex align-items-center">
+          <div class="w-2 h-2 rounded-circle bg-danger anim-ping ping-danger me-5 flex-shrink-0"></div>
+          <div class="form-group w-100">
+            <select data-controller="select">
+              <option value="moule">Moule</option>
+              <option value="frite">Frite</option>
+              <option value="mayo">Mayo</option>
+            </select>
+          </div>
+          <i class="fas fa-arrow-right fa-2x text-gray-400 px-4"></i>
+          <div class="form-group w-100">
+            <select data-controller="select">
+              <option value="moule">Moule</option>
+              <option value="frite">Frite</option>
+              <option value="mayo">Mayo</option>
+            </select>
+          </div>
+          <div class="dropdown-component flex-shrink-0 d-flex position-relative" data-controller="dropdown">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide" class="d-inline-flex justify-content-center align-items-center">
+              <i class="fas fa-ellipsis-v fa-2x text-gray-400 ps-5" type="button" aria-expanded="false"></i>
+            </div>
+            <div class="dropdown-component-menu position-absolute right-0 top-0 my-5 rounded-3 z-index-50 d-none animated fadeOut" data-dropdown-target="menu">
+              <div class="rounded-3 bg-white shadow">
+                <div class="p-3">
+                  <a class="dropdown-item py-1" href="#">Delete</a>
+                  <a class="dropdown-item py-1" href="#">Deactivate</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="py-2">
+        <div class="shadow-sm bg-white rounded-3 col-12 px-5 py-3 d-flex align-items-center">
+          <div class="w-2 h-2 rounded-circle bg-danger anim-ping ping-danger me-5 flex-shrink-0"></div>
+          <div class="form-group w-100">
+            <select data-controller="select">
+              <option value="moule">Moule</option>
+              <option value="frite">Frite</option>
+              <option value="mayo">Mayo</option>
+            </select>
+          </div>
+          <i class="fas fa-arrow-right fa-2x text-gray-400 px-4"></i>
+          <div class="form-group w-100">
+            <select data-controller="select">
+              <option value="moule">Moule</option>
+              <option value="frite">Frite</option>
+              <option value="mayo">Mayo</option>
+            </select>
+          </div>
+          <div class="dropdown-component flex-shrink-0 d-flex position-relative" data-controller="dropdown">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide" class="d-inline-flex justify-content-center align-items-center">
+              <i class="fas fa-ellipsis-v fa-2x text-gray-400 ps-5" type="button" aria-expanded="false"></i>
+            </div>
+            <div class="dropdown-component-menu position-absolute right-0 top-0 my-5 rounded-3 z-index-50 d-none animated fadeOut" data-dropdown-target="menu">
+              <div class="rounded-3 bg-white shadow">
+                <div class="p-3">
+                  <a class="dropdown-item py-1" href="#">Delete</a>
+                  <a class="dropdown-item py-1" href="#">Deactivate</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade pt-5" id="fields" role="tabpanel" aria-labelledby="fields-tab">
+      <div class="py-2">
+        <div class="shadow-sm bg-white rounded-3 col-12 px-5 py-3 d-flex align-items-center">
+          <div class="w-2 h-2 rounded-circle bg-danger anim-ping ping-danger me-5 flex-shrink-0"></div>
+          <div class="form-group w-100">
+            <select data-controller="select">
+              <option value="moule">Moule</option>
+              <option value="frite">Frite</option>
+              <option value="mayo">Mayo</option>
+            </select>
+          </div>
+          <i class="fas fa-arrow-right fa-2x text-gray-400 px-4"></i>
+          <div class="form-group w-100">
+            <select data-controller="select">
+              <option value="moule">Moule</option>
+              <option value="frite">Frite</option>
+              <option value="mayo">Mayo</option>
+            </select>
+          </div>
+          <div class="dropdown-component flex-shrink-0 d-flex position-relative" data-controller="dropdown">
+            <div data-action="click->dropdown#toggle click@window->dropdown#hide touch->dropdown#toggle touch@window->dropdown#hide" class="d-inline-flex justify-content-center align-items-center">
+              <i class="fas fa-ellipsis-v fa-2x text-gray-400 ps-5" type="button" aria-expanded="false"></i>
+            </div>
+            <div class="dropdown-component-menu position-absolute right-0 top-0 my-5 rounded-3 z-index-50 d-none animated fadeOut" data-dropdown-target="menu">
+              <div class="rounded-3 bg-white shadow">
+                <div class="p-3">
+                  <a class="dropdown-item py-1" href="#">Delete</a>
+                  <a class="dropdown-item py-1" href="#">Deactivate</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container pt-4">
+  <div class="rounded-3 bg-white shadow-sm p-4 mx-auto my-5">
+    <% if @webhook_events.any? %>
+      <div class="divTable">
+        <div class="divTableHeading">
+          <div class="divTableHead">ID</div>
+          <div class="divTableHead">Status</div>
+          <div class="divTableHead">Response message</div>
+          <div class="divTableHead">Params</div>
+          <div class="divTableHead">Result</div>
+          <div class="divTableHead">Date</div>
+          <div class="divTableHead">Actions</div>
+        </div>
+        <div class="divTableBody">
+          <%= render @webhook_events %>
+        </div>
+      </div>
+
+      <%= paginate @webhook_events %>
+    <% else %>
+      <div class="p-5 border rounded-3 my-5">
+        <div class="container-fluid py-5">
+          <h1 class="display-5 fw-bold">No logs yet.</h1>
+          <p class="col-md-8 fs-5">
+            Here you will find the logs of all wehbooks sent by noCRM.
+            Logs are useful to monitor data synchronization and understand why some data failed to be synced.
+          </p>
+          <% if current_customer.has_connected_nocrm? %>
+          <p class="col-md-8 fs-5">
+            The first logs will appear here when events occur on your noCRM account.
+          </p>
+          <% else %>
+            <%= link_to "Connect noCRM", customer_url, class: 'btn btn-primary btn-lg' %>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </div>
+</div>

@@ -1,0 +1,39 @@
+<div class="container">
+  <div class="row align-items-center justify-content-center min-vh-100 -mt-5">
+    <div class="col-md-8">
+      <h2 class="pb-4"><%= t('.sign_up') %></h2>
+
+      <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <% if resource.errors.full_messages.any? %>
+        <%= javascript_tag(flashover("Please follow the instructions to create your account.", {color: 'danger'})) %>
+      <% end %>
+
+
+        <div class="form-floating mb-3">
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', placeholder: 'name@example.com' %>
+          <%= f.label :email %>
+        </div>
+
+        <div class="form-floating mb-3">
+          <%= f.password_field :password, autocomplete: "new-password", class: 'form-control', placeholder: '***********' %>
+          <%= f.label :password %>
+
+          <% if @minimum_password_length %>
+          <div class="form-text"><%= t('devise.shared.minimum_password_length', count: @minimum_password_length) %></div>
+          <% end %>
+        </div>
+
+        <div class="form-floating mb-3">
+          <%= f.password_field :password_confirmation, autocomplete: "new-password", class: 'form-control', placeholder: '***********' %>
+          <%= f.label :password_confirmation %>
+        </div>
+
+        <div class="my-4">
+          <%= f.submit t('.sign_up'), class: 'btn btn-lg btn-primary' %>
+        </div>
+      <% end %>
+
+      <%= render "devise/shared/links" %>
+    </div>
+  </div>
+</div>

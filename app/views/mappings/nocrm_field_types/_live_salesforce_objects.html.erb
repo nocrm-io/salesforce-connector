@@ -1,0 +1,36 @@
+<%= turbo_frame_tag "live_salesforce_objects" do %>
+  <% SalesforceField::OBJECT_TYPES.each do |object_type, config| %>
+    <% required_fields = SalesforceField.send("#{object_type.downcase.pluralize}").where(is_required: true) %>
+    <% optional_fields = SalesforceField.send("mapped_#{object_type.downcase.pluralize}").where(is_required: false) %>
+
+    <div class="py-2">
+      <div class="shadow-sm bg-white rounded-3 p-4">
+        <h3><%= object_type %></h3>
+        <% if config[:skip_on_failure] %>
+          <div class="text-gray-600 fs-7 fst-italic">
+            <i class="fas fa-circle-info text-blue-400 me-1"></i>
+            If there is not enough data to create the <%= object_type %>, the Opportunity will still be created
+          </div>
+        <% end %>
+        <div class="row mt-4">
+          <%= tag.p "Required fields", class: "text-gray-400 fs-7 mb-0" if required_fields.any? %>
+          <% SalesforceField.send("#{object_type.downcase.pluralize}").where(is_required: true).each do |required_field| %>
+            <div class="col-4">
+              <%= tag.div nil, class: "#{required_field.mappings.any? ? 'bg-green-100 text-green-800' : 'bg-gray-100 text-gray-400' } #{'anim-pulse' if new_mapped_field == required_field.id} rounded-pill px-3 py-1 my-2 text-truncate d-flex align-items-center justify-content-between",
+                          data: { controller: "tooltip", tooltip_options_value: { title: required_field.default&.dig(:strategy) || required_field.name } } do %>
+                <%= required_field.name %>
+                <%= tag.i nil, class: "fas #{required_field.mappings.any? ? 'fa-check-circle text-green-800' : 'fa-asterisk text-red-500' }" %>
+              <% end %>
+            </div>
+          <% end %>
+        </div>
+        <%= tag.p "Optional fields", class: "text-gray-400 fs-7 mb-0 mt-4" if optional_fields.any? %>
+        <div class="d-flex align-items-center">
+          <% SalesforceField.send("mapped_#{object_type.downcase.pluralize}").where(is_required: false).each do |field| %>
+            <%= tag.div field.name, class: "#{'anim-pulse' if new_mapped_field == field.id} rounded-pill bg-blue-100 text-blue-800 fs-7 px-3 py-1 my-2 me-2 text-truncate", data: { controller: "tooltip", tooltip_options_value: { title: field.name } } %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  <% end %>
+<% end %>

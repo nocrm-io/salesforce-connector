@@ -1,0 +1,61 @@
+.form-error {
+  border-color: $danger;
+  text-color: $red-800;
+   placeholder-red-300 focus:border-red-300 focus:ring-red-300
+  &::placeholder {
+    color: $danger;
+  }
+  &:focus {
+    border-color: $danger;
+  }
+}
+.form-hint {
+  margin-top: 0.5rem;
+  font-size: 0.75rem !important;
+  line-height: 1rem !important;
+  color: $gray-500;
+  &.error {
+    color: $red-500;
+  }
+}
+:not(div.form-floating):not(div.input-group) > {
+  .form-input, .form-control, .ss-single-selected {
+    height: 42px !important;
+    display: flex;
+    align-items: center;
+  }
+  .form-input, .form-control, .ss-single-selected, .ss-multi-selected {
+    border: 2px solid $gray-200 !important;
+    border-radius: 0.5rem !important;
+    padding: $spacer * 0.25 $spacer * 0.5 !important
+  }
+}
+
+.ss-main {
+  .ss-single-selected, .ss-multi-selected {
+    display: flex;
+    align-items: center;
+    .ss-add {
+      margin: 0 0.5rem 0 0 !important;
+    }
+    .placeholder {
+      cursor: pointer;
+      background: none;
+      color: $gray-600 !important;
+      opacity: 1;
+      line-height: initial !important;
+    }
+  }
+  .ss-content {
+    border-radius: 0.5rem !important;
+    border: 2px solid $gray-200 !important;
+    right: 0;
+    left: 0;
+    .ss-search input {
+      box-shadow: none !important;
+      border: 2px solid $blue-200 !important;
+      border-radius: 0.5rem !important;
+      height: 40px;
+    }
+  }
+}

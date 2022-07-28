@@ -1,0 +1,14 @@
+
+<div class="py-2">
+  <div class="d-flex align-items-center card-component text-gray-600 px-4 py-2">
+    <div class="form-group w-100">
+      <%= step.name %>
+    </div>
+    <i class="fas fa-arrow-right fa-2x text-gray-200 px-4"></i>
+    <div class="form-group w-100">
+      <%= form_with model: step do |f| %>
+        <%= f.select :stage_id, SalesforceStage.all.collect {|p| [ p.name, p.id ] }, { include_blank: true }, data: { controller: "select", select_options_value: { allowDeselect: true } }, onchange: "this.form.requestSubmit()" %>
+      <% end %>
+    </div>
+  </div>
+</div>

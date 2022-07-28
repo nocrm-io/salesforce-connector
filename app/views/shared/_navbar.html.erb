@@ -1,0 +1,41 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+  <div class="container">
+    <a href="#" class="navbar-brand">
+      <%= image_tag( asset_path("salesforce_logo.png"), class: 'mw-100', width: 50 ) %>
+      <small><i class="fa-solid fa-plus text-white mx-2"></i></small>
+      <%= image_tag( asset_path("logo-white.svg"), class: 'mw-100 me-4', width: 80 ) %>
+    </a>
+    <button type="button" class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#navbarCollapse2">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse d-lg-flex align-items-center justify-content-between" id="navbarCollapse2">
+      <div class="navbar-nav">
+        <ul class="navbar-nav me-auto mb-2 mb-lg-0">
+          <li class="nav-item d-inline-flex align-items-center">
+            <%= link_to mappings_path, class: "nav-link d-inline-flex align-items-center #{'active' if controller_name == 'mappings'}" do %>
+              Mapping
+              <% unless setup_completed? %>
+                <%= tag.i nil, class: "fas fa-exclamation-circle fa-xs -mt-4 text-white",
+                              data: { controller: "tooltip",
+                                      tooltip_options_value: { title: "Your setup is not completed yet. Please match all the required fields and steps to unleash your superpowers." } } %>
+              <% end %>
+            <% end %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "noCRM connection", customer_url, class: "nav-link #{'active' if controller_name == 'customers'}"  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Salesforce connection", auth_salesforce_url, class: "nav-link #{'active' if controller_name == 'salesforce'}"  %>
+          </li>
+          <li class="nav-item">
+            <%= link_to "Logs", webhook_events_url, class: "nav-link #{'active' if controller_name == 'webhook_events'}"  %>
+          </li>
+        </ul>
+      </div>
+      <%= button_to destroy_customer_session_path, method: :delete, class: 'btn btn-primary' do %>
+        Logout
+        <i class="fas fa-right-from-bracket ms-2"></i>
+      <% end %>
+    </div>
+  </div>
+</nav>

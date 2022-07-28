@@ -1,0 +1,17 @@
+<%= turbo_frame_tag :remote_modal, target: :_top do %>
+  <div class="modal fade" data-controller="modal">
+    <div class="modal-dialog modal-lg">
+      <div class="modal-content">
+        <div class="modal-header p-4">
+          <h5 class="modal-title fs-4">
+            <i class="fas fa-network-wired fa-lg text-blue-800 me-2"></i>
+            <%= request.params[:action] = 'new' ? "New mapping" : "Edit mapping" %></h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body p-4">
+          <%= render "mappings/nocrm_field_types/form", mapping: mapping %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

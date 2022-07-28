@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>noCRM's Salesforce connector</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <% if customer_signed_in? %>
+    <%= render partial: 'shared/navbar' %>
+  <% end %>
+
+  <body class="bg-gray-50 pb-5">
+    <%= javascript_tag(flashover) %>
+    <%= yield %>
+  </body>
+
+  <%= turbo_frame_tag "remote_modal" %>
+  <div id="toast-container" class="position-fixed top-0 end-0 m-4"></div>
+</html>

@@ -1,0 +1,58 @@
+// Colors
+$blue:    #60A5FA;
+$indigo:  #818CF8;
+$purple:  #C084FC;
+$pink:    #F43F5E;
+$red:     #EF4444;
+$orange:  #FB923C;
+$yellow:  #FACC15;
+$green:   #4ADE80;
+$teal:    #2DD4BF;
+$cyan:    #22D3EE;
+$gray-50: #FAFAFA;
+$gray-100: #F4F4F5;
+$gray-200: #E4E4E7;
+$gray-300: #D4D4D8;
+$gray-400: #A1A1AA;
+$gray-500: #71717A;
+$gray-600: #52525B;
+$gray-700: #3F3F46;
+$gray-800: #27272A;
+$gray-900: #18181B;
+$yellow-50: #FEFCE8;
+$yellow-100: #FEF9C3;
+$yellow-500: #EAB308;
+$yellow-800: #854D0E;
+$green-50: #F0FDF4;
+$green-100: #DCFCE7;
+$green-500: #22C55E;
+$green-600: #16A34A;
+$green-700: #15803D;
+$green-800: #166534;
+$red-50: #FEF2F2;
+$red-100: #f8d7da;
+$red-500: #EF4444;
+$red-800: #58151d;
+$blue-50: #ECFEFF;
+$blue-100: #E6F9FF;
+$blue-300: #93C5FD;
+$blue-400: #60A5FA;
+$blue-500: #2a98ee;
+$blue-600: #0284C7;
+$blue-700: #0369A1;
+$blue-800: #075985;
+$blue-900: #0C4A6E;
+
+$theme-colors: (
+  "primary":  $blue-700,
+  "warning":  $yellow,
+  "danger":    $pink,
+  "success":  $green,
+  "light":  $gray-100,
+);
+
+// Border-radius
+$border-radius-sm: 0.125rem;
+$border-radius: 0.25rem;
+$border-radius-md: 0.375rem;
+$border-radius-lg: 0.5rem;

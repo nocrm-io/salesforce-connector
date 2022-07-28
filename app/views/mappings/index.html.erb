@@ -1,0 +1,80 @@
+<div class="container">
+  <div class="heading pt-5 pb-4">
+    <h1>Data Mapping</h1>
+    <p>Map data between your noCRM and SaleForce accounts.</p>
+  </div>
+</div>
+
+<div class="container">  
+  <ul class="nav nav-tabs bg-white shadow-sm rounded-3 border-bottom" id="myTab" role="tablist">
+    <li class="nav-item col-6 text-center" role="presentation">
+      <button class="fs-4 nav-link active" id="pipeline-steps-tab" data-bs-toggle="tab" data-bs-target="#pipeline-steps" type="button" role="tab" aria-controls="pipeline-steps" aria-selected="true">
+        Pipeline Matching
+        <% unless setup_steps_completed? %>
+          <%= tag.i nil, class: "fas fa-exclamation-circle fa-xs ms-3 text-warning",
+                         data: { controller: "tooltip",
+                                 tooltip_options_value: { title: "You still have noCRM pipeline steps that does not match any Salesforce stages." } } %>
+        <% end %>
+      </button>
+    </li>
+    <li class="nav-item col-6 text-center" role="presentation">
+      <button class="fs-4 nav-link" id="lead-sync-tab" data-bs-toggle="tab" data-bs-target="#lead-sync" type="button" role="tab" aria-controls="lead-sync" aria-selected="false">
+        Lead Synchronization
+        <% unless setup_fields_completed? %>
+          <%= tag.i nil, class: "fas fa-exclamation-circle fa-xs ms-3 text-warning",
+                         data: { controller: "tooltip",
+                                 tooltip_options_value: { title: "Please fill all the required Salesforce fields with any noCRM ones." } } %>
+        <% end %>
+      </button>
+    </li>
+  </ul>
+  <div class="tab-content" id="tabContent">
+    <div class="tab-pane fade show active" id="pipeline-steps" role="tabpanel" aria-labelledby="pipeline-steps-tab">
+      <div class="row align-items-center justify-content-center mt-4">
+        <div class="col-6 fs-5 fw-bold pb-3 text-center">
+          <div>
+            <%= image_tag( asset_path("logo.svg"), class: 'w-16 me-3 mb-4' ) %>
+          </div>
+          <% options_list = [] %>
+          <% NocrmStep.pipelines.each_with_index do |p, i| %>
+            <% options_list << { text: p[:name], innerHTML: tag.div(p[:name], class: 'd-block', id: "#{p[:name].parameterize}-tab", data: { bs_toggle: "tab", bs_target: "##{p[:name].parameterize}" }) } %>
+          <% end %>
+          <%= tag.select nil, class: "nav max-w-33 ms-3",
+                              data: { controller: "select",
+                                      select_options_list_value: options_list,
+                                      select_options_value: { showSearch: NocrmStep.pipelines.count > 10 } } %>
+          <span class="flex-shrink-0 ms-2">
+            Steps
+          </span>
+        </div>
+        <div class="col-6 text-center fs-5 fw-bold pb-3">
+          <div>
+            <%= image_tag( asset_path("salesforce_logo.png"), class: 'h-6 me-3 mb-4' ) %>
+          </div>
+          <span class="flex-shrink-0">
+            Salesforce Stages
+          </span>
+        </div>
+        <div class="col-12">
+          <div class="tab-content">
+            <% NocrmStep.pipelines.each_with_index do |p, i| %>
+              <div class="tab-pane fade <%= 'active show' if i.zero? %>" id="<%= p[:name].parameterize %>" role="tabpanel" aria-labelledby="<%= p[:name].parameterize %>-tab">
+                <%= render partial: "mappings/nocrm_steps/step", collection: NocrmStep.where(pipeline_id: p[:id]), as: :step %>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="tab-pane fade pt-5" id="lead-sync" role="tabpanel" aria-labelledby="lead-sync-tab">
+      <div class="row">
+        <div class="col-6">
+          <%= render partial: "mappings/nocrm_field_types/field_list" %>
+        </div>
+        <div class="col-6">
+          <%= render partial: "mappings/nocrm_field_types/live_salesforce_objects", locals: { new_mapped_field: @new_mapped_field } %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

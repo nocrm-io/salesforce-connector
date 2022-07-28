@@ -1,0 +1,109 @@
+nocrm_attributes:
+  - name: 'id'
+    label: "Lead's uniq identifier"
+
+  - name: 'title'
+    label: "Lead's title"
+
+  - name: 'description'
+    label: "Lead's HTML description"
+
+  - name: 'text_description'
+    label: "Lead's text description"
+
+  - name: 'amount'
+    label: "Lead's amount"
+
+  - name: 'currency'
+    label: "Lead's amount currency"
+
+  - name: 'probability'
+    label: "Lead's probability"
+
+  - name: 'reminder_at'
+    label: "Lead's reminder date"
+
+  - name: 'reminder_duration'
+    label: "Lead's reminder duration"
+
+  - name: 'reminder_activity_id'
+    label: "Lead's reminder activity identifier"
+
+  - name: 'reminder_activity_name'
+    label: "Lead's reminder activity name"
+
+  - name: 'reminder_note'
+    label: "Lead's reminder note"
+
+  - name: 'reminder_activity_log_id'
+    label: "Lead's reminder note identifier"
+
+  - name: 'updated_at'
+    label: "Lead's last modification date"
+
+  - name: 'created_at'
+    label: "Lead's creation date"
+
+  - name: 'starred'
+    label: "Lead's starred"
+
+  - name: 'status'
+    label: "Lead's status"
+
+  - name: 'tags'
+    label: "Lead's tags"
+
+  - name: 'contact_email'
+    label: "Lead's contact email"
+
+  - name: 'first_contact_email'
+    label: "Lead's first contact email"
+
+  - name: 'all_contact_emails'
+    label: "Lead's all contact emails"
+
+  - name: 'permalink'
+    label: "Lead's URL"
+
+  - name: 'team.id'
+    label: "Lead's team identifier"
+
+  - name: 'team.name'
+    label: "Lead's team name"
+
+  - name: 'closed_at'
+    label: "Lead's closed date"
+
+  - name: 'estimated_closing_date'
+    label: "Lead's estimated closing date"
+
+  - name: 'user.id'
+    label: "Lead's owner identifier"
+
+  - name: 'user.lastname'
+    label: "Lead's owner lastname"
+
+  - name: 'user.firstname'
+    label: "Lead's owner firstname"
+
+  - name: 'user.email'
+    label: "Lead's owner email address"
+
+  - name: 'user.phone'
+    label: "Lead's owner phone number"
+
+  - name: 'user.mobile_phone'
+    label: "Lead's owner mobile phone number"
+
+  - name: 'client.id'
+    label: "Client's folder identifier"
+
+  - name: 'client.name'
+    label: "Client's folder name"
+
+  - name: 'client.description'
+    label: "Client's folder description"
+
+  - name: 'client.is_active'
+    label: "Client's folder still active"
+

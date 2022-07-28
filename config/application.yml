@@ -1,0 +1,18 @@
+defaults: &defaults
+  protocol: 'https://'
+  nocrm_domain: 'nocrm.io'
+  # In development mode, you want to expose your local app to the web using a tool like https://ngrok.com/
+  app_url: "<%= ENV.fetch('APP_URL') { 'http://change-me-in-application.yml.com' } %>"
+  salesforce:
+    redirect_path: "/auth/salesforce/oauth2callback"
+    authorize_url: 'https://login.salesforce.com/services/oauth2/authorize'
+    token_url: 'https://login.salesforce.com/services/oauth2/token'
+
+development:
+  <<: *defaults
+
+test:
+  <<: *defaults
+
+production:
+  <<: *defaults

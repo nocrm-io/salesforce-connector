@@ -1,0 +1,42 @@
+<div class="container">
+  <div class="rounded-3 bg-white shadow-sm p-5 mx-auto my-5">
+
+    <%= image_tag( asset_path("salesforce_logo.png"), class: 'mw-100 me-4', width: 140 ) %>
+
+    <hr class="my-4 bg-primary"/>
+
+    <p class="lead">
+      <% if current_customer.salesforce_account %>
+        <i class="fa-solid fa-circle-check text-success"></i> Your Salesforce account is connected
+      <% else %>
+        Connect your Salesforce account
+      <% end %>
+    </p>
+
+    <% if current_customer.salesforce_account %>
+      <p>If you have added custom fields or changed the stages of your opportunities in Salesforce, you can use the button below to fetch the updates.</p>
+      <div class="d-flex">
+        <%= button_to synchronize_fields_auth_salesforce_url, class: 'btn btn-primary me-2' do %>
+          <span class="show-when-enabled">
+            <%= turbo_frame_tag "synchronize_finished" do %>
+              <i class="fa-solid fa-arrows-rotate me-2"></i>
+              Refetch Salesforce fields and stages
+            <% end %>
+          </span>
+          <span class="show-when-disabled"><i class="fas fa-spinner fa-spin me-2"></i>Processing...</span>
+        <% end %>
+
+        <%= button_to revoke_token_auth_salesforce_url, method: :post, class: 'btn btn-danger', form: { data: { turbo_confirm: "Are you sure? Revoking the connection will reset all your fields mapping. There is no undo." } } do %>
+          <i class="fa-solid fa-link-simple-slash me-2"></i>
+          Revoke connection
+        <% end %>
+      </div>
+    <% else %>
+      <%= render partial: 'auth/salesforce/connect_sf_account' %>
+    <% end %>
+    <div class="alert alert-primary mt-3 w-auto">
+      OAuth callback URL to enter in Salesforce OAuth settings: <br>
+      <code><%= SalesforceApi.redirect_uri %></code>
+    </div>
+  </div>
+</div>

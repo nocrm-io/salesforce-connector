@@ -1,0 +1,13 @@
+.card-component {
+  transition: all 0.15s ease-in-out !important;
+  height: 100%;
+  text-decoration: none !important;
+  position: relative;
+  box-shadow: 0 .125rem .25rem rgba(0,0,0,.075);
+  background-color: white;
+  border-radius: 0.5rem;
+  &.clickable:hover {
+    cursor: pointer;
+    box-shadow: 0 .5rem 1rem rgba(0,0,0,.15)!important;
+  }
+}

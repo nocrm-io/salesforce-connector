@@ -1,0 +1,11 @@
+<%= turbo_stream.replace "live_salesforce_objects" do %>
+  <%= render partial: "live_salesforce_objects", locals: { new_mapped_field: @new_mapped_field} %>
+<% end %>
+
+<%= turbo_stream.replace dom_id(@mapping) do %>
+  <%= render partial: "field", locals: { mapping: @mapping} %>
+<% end %>
+
+<%= turbo_stream.replace "remote_modal" do %>
+  <%= turbo_frame_tag "remote_modal" %>
+<% end %>

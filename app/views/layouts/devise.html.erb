@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>noCRM's Salesforce connector</title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
+  </head>
+
+  <body class="bg-gray-50">
+    <%= javascript_tag(flashover) %>
+
+    <div class="row">
+
+      <div class="col-7 bg-primary p-5 min-vh-100 shadow-lg">
+        <div class="col-10 mx-auto">
+          <div class="row d-flex align-items-center w-75">
+            <div class="col-5">
+              <%= image_tag( asset_path("salesforce_logo.png"), class: 'mw-100' ) %>
+            </div>
+            <div class="col-2 text-center">
+              <i class="fa-solid fa-plus fa-3x text-white"></i>
+            </div>
+            <div class="col-5">
+              <%= image_tag( asset_path("logo-white.svg"), class: 'mw-100' ) %>
+            </div>
+          </div>
+          <div class="mt-5 text-white">
+            <h1 class="py-5">
+              <i class="fa-solid fa-rotate-180 fa-comet me-2"></i> Salesforce on steroids
+            </h1>
+            <p>
+              100% sales focused, noCRM.io is the best lead management software.
+              It helps salespeople do their work, without the hassle of filling endless forms.
+            </p>
+            <p>
+              Connected to Salesforce, you get the best of both worlds: happy and efficient salespeople, while the CRM is always up to date.
+            </p>
+            <h6>
+              Connect your Salesforce account to noCRM.io now.
+            </h6>
+            
+            <hr class="my-5"/>
+            
+            <p class="fw-light opacity-50">
+              <small>© nocrm ™ - Software by You Don't Need a CRM, a Paris-based company.</small>
+              <br/>
+              <small>Salesforce brand and logo are registered trademarks of Salesforce.</small>
+            </p>
+
+          </div>
+        </div>
+      </div>
+      <div class="col-5">
+        <% if notice %>
+          <p class="alert alert-success my-5"><%= notice %></p>
+        <% end %>
+        <% if alert %>
+          <p class="alert alert-danger my-5"><%= alert %></p>
+        <% end %>
+        <%= yield %>
+      </div>
+    </div>
+
+    <div id="toast-container" class="position-fixed top-0 end-0 m-4"></div>
+
+  </body>
+</html>

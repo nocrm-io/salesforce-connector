@@ -1,0 +1,37 @@
+.divTable{
+	display: table;
+	width: 100%;
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #FFF;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+  display: table-cell;
+  padding: 10px;
+	font-size: 0.875rem !important;
+  line-height: 1.25rem !important;
+}
+.divTableHead, .divTableRow:not(:last-child) .divTableCell {
+  border: 2px solid #ededed;
+  border-left: 0;
+  border-right: 0;
+  border-top: 0;
+}
+
+.divTableHeading {
+	background-color: #FFF;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #FFF;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}

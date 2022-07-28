@@ -1,0 +1,14 @@
+button {
+  .show-when-enabled { display: initial; }
+  .show-when-disabled { display: none; }
+  &[disabled] {
+    .show-when-enabled { display: none; }
+    .show-when-disabled { display: initial; }
+  }
+}
+.btn {
+  border-radius: .5rem;
+  &.btn-danger {
+    color: white;
+  }
+}

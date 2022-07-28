@@ -1,0 +1,27 @@
+<%= turbo_frame_tag "mapped_fields_and_attributes" do %>
+  <% nocrm_field_type_mappings = Mapping.where(nocrm_object_type: "NocrmFieldType") %>
+  <% nocrm_attributes_mappings = Mapping.where(nocrm_object_type: "NocrmAttribute") %>
+
+  <% if nocrm_field_type_mappings.any? || nocrm_attributes_mappings.any? %>
+    <div class="py-2">
+      <%= link_to new_nocrm_field_type_path, data: { controller: "turbo" }, class: "btn btn-primary w-100" do %>
+        <i class="far fa-plus-circle me-2"></i>
+        Add a new mapping
+      <% end %>
+    </div>
+    <%= render partial: "mappings/nocrm_field_types/field", collection: Mapping.where(nocrm_object_type: "NocrmFieldType"), as: :mapping %>
+    <%= render partial: "mappings/nocrm_field_types/field", collection: Mapping.where(nocrm_object_type: "NocrmAttribute"), as: :mapping %>
+  <% else %>
+    <div class="text-center">
+      <i class="far fa-network-wired fa-4x text-gray-400"></i>
+      <h3 class="mt-4 fs-7 fw-bolder text-gray-900">No mappings</h3>
+      <p class="my-2 fs-7 text-gray-500">Make your noCRM fields match your Salesforce ones.</p>
+    </div>
+    <div class="mt-4 d-flex justify-content-center">
+      <%= link_to new_nocrm_field_type_path, data: { controller: "turbo" }, class: "btn btn-primary" do %>
+        <i class="far fa-plus-circle me-2"></i>
+        Add a new mapping
+      <% end %>
+    </div>
+  <% end %>
+<% end %>

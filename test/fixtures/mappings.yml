@@ -1,0 +1,15 @@
+# Read about fixtures at https://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  customer_id: 1
+  nocrm_object_id: 1
+  nocrm_object_type: MyString
+  salesforce_object_id: 1
+  salesforce_object_type: MyString
+
+two:
+  customer_id: 1
+  nocrm_object_id: 1
+  nocrm_object_type: MyString
+  salesforce_object_id: 1
+  salesforce_object_type: MyString

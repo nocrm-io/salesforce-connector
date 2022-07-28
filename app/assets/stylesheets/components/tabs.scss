@@ -1,0 +1,19 @@
+.nav.nav-tabs {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  overflow: hidden;
+  .nav-item {
+    text-align: center;
+    .nav-link {
+      padding: $spacer * 1.5;
+      width: 100%;
+      border: none;
+      color: $gray-600;
+      &.active {
+        color: $blue-500;
+        border-bottom: 4px solid $blue-500 !important;
+      }
+    }
+  }
+}

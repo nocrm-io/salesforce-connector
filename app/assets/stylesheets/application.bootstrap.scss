@@ -1,0 +1,14 @@
+@import './base/variables.scss';
+@import './base/utils.scss';
+
+@import 'bootstrap/scss/bootstrap';
+
+@import './components/animations.scss';
+@import './components/buttons.scss';
+@import './components/cards.scss';
+@import './components/dropdowns.scss';
+@import './components/form.scss';
+@import './components/tables.scss';
+@import './components/tabs.scss';
+
+@import 'slim-select/src/slim-select/slimselect.scss';

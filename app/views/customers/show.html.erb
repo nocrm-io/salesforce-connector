@@ -1,0 +1,74 @@
+<div class="container">
+  <div class="rounded-3 bg-white shadow-sm p-5 mx-auto my-5">
+
+    <%= image_tag( asset_path("logo.svg"), class: 'mw-100 me-4', width: 200 ) %>
+
+    <hr class="my-4 bg-primary"/>
+
+    <% unless current_customer.has_connected_nocrm? %>
+      <p>
+        If you don't have a noCRM account yet, create a free trial account here : <%= link_to 'nocrm.io', 'https://www.nocrm.io' %>
+      </p>
+
+      <p>
+        To connect your noCRM account, you need to enter:
+      </p>
+
+      <ul>
+        <li class="mb-2">
+          <p class="m-0"><b>Your account's subdomain</b></p>
+          <p class="m-0"><small class=""><i class="fa-solid fa-circle-info text-success"></i> The part between "https://" and ".nocrm.io" in the address bar of your browser</small></p>
+        </li>
+        <li class="mb-2">
+          <p class="m-0"><b>Your API key</b></p>
+          <p class="m-0"><small class=""><i class="fa-solid fa-circle-info text-success"></i> You can create API keys in the admin sections of your account, <%= link_to "more info", "https://www.nocrm.io/help/API" %>.</small></p>
+        </li>
+      </ul>
+      <hr class="my-4 bg-primary"/>
+    <% end %>
+
+    <div class="max-w-50">
+      <p class="lead">
+        <% if current_customer.has_connected_nocrm? %>
+          <i class="fa-solid fa-circle-check text-success"></i> Your noCRM account is connected
+        <% else %>
+          Connect your noCRM account
+        <% end %>
+      </p>
+      <%= form_for current_customer do |f| %>
+        <div class="form-floating mb-3">
+          <%= f.text_field :nocrm_account, placeholder: 'mycompany', class: 'form-control', required: true, disabled: current_customer.api_key.present? %>
+          <%= f.label :nocrm_account, "Your noCRM account's subdomain" %>
+        </div>
+        <div class="form-floating mb-3">
+          <%= f.text_field :api_key, class: 'form-control', required: true, disabled: current_customer.api_key.present?, placeholder: '********************'  %>
+          <%= f.label :api_key, "Your noCRM API key" %>
+        </div>
+        <% unless current_customer.api_key.present? %>
+          <%= f.button class: 'btn btn-success', type: :submit do %>
+            <span class="show-when-enabled">Save</span>
+            <span class="show-when-disabled"><i class="fas fa-spinner fa-spin me-2"></i> Connecting your account and synchronizing data...</span>
+          <% end %>
+        <% end %>
+      <% end %>
+    </div>
+    <div class="alert alert-primary mt-3 w-auto">
+      Webhook events from your noCRM account will be sent at: <br>
+      <code><%= NocrmApi.webhook_events_target(current_tenant) %></code>
+    </div>
+  </div>
+
+    <% if current_customer.has_connected_nocrm? %>
+      <div class="d-flex mt-4">
+        <%= link_to ping_api_customer_url, class: 'btn btn-primary' do %>
+          <i class="fa-solid fa-arrows-rotate me-2"></i>
+          Test connection
+        <% end %>
+        <%= button_to revoke_token_customer_url, method: :post, form: { data: { turbo_confirm: "Are you sure? Revoking the connection will reset all your fields mapping. There is no undo." } }, class: 'btn btn-danger ms-2' do %>
+          <i class="fa-solid fa-link-simple-slash me-2"></i>
+          Revoke connection
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</div>

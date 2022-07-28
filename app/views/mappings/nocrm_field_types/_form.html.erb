@@ -1,0 +1,40 @@
+<%= form_with model: mapping, scope: :mapping, url: mapping.persisted? ? nocrm_field_type_path(mapping) : nocrm_field_types_path do |f| %>
+  <div class="py-2">
+    <div class="d-flex align-items-center mb-3">
+      <div class="col-5 text-center">
+        <%= image_tag( asset_path("logo.svg"), class: 'w-16' ) %>
+      </div>
+      <div class="col-2 text-center">
+        <i class="fas fa-plus fa-3x text-gray-200 px-4"></i>
+      </div>
+      <div class="col-5 text-center">
+        <%= image_tag( asset_path("salesforce_logo.png"), class: 'w-16' ) %>
+      </div>
+    </div>
+    <p class="mb-5">Whenever you create a lead in our app the noCRM field you pick below will match the Salesforce field you pick from the right selecter.</p>
+
+    <div class="d-flex align-items-center">
+      <div class="fw-bold w-100">noCRM Field</div>
+      <div class="w-20 px-2"></div>
+      <div class="fw-bold w-100">Salesforce Field</div>
+    </div>
+    <div class="d-flex align-items-center">
+      <div class="form-group w-100">
+        <% nocrm_fields = NocrmFieldType.grouped_fields_for_select + NocrmAttribute.grouped_fields_for_select %>
+        <%= f.select :nocrm_object_gid, options_for_select(nocrm_fields, mapping.nocrm_object_gid),
+                     { include_blank: true }, { data: { controller: 'select' } } %>
+      </div>
+      <i class="fas fa-arrow-right fa-2x text-gray-200 px-4"></i>
+      <div class="form-group w-100">
+        <%= f.hidden_field :salesforce_object_type, value: 'SalesforceField' %>
+        <%= f.select :salesforce_object_id, grouped_options_for_select(SalesforceField.grouped_fields_for_select, selected: mapping.salesforce_object_id, disabled: SalesforceField.mapped.ids.map(&:to_s)),
+                     { include_blank: true }, data: { controller: "select" }
+        %>
+
+      </div>
+    </div>
+    <div class="d-flex align-items-center justify-content-end">
+      <%= f.submit class: 'btn btn-primary mt-4' %>
+    </div>
+  </div>
+<% end %>

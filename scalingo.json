@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "postdeploy": "bundle exec rails db:migrate"
+  },
+  "website": "https://www.nocrm.io",
+  "description": "A web application that allows synchronizing a noCRM.io account with Salesforce",
+  "env": {
+    "RAILS_MASTER_KEY": {
+      "description": "Master key used for credentials.yml encryption",
+      "value": "d502c5963932c2fca52d0399db6fc0c1"
+    },
+    "APP_URL": {
+      "description": "Public URL of the application",
+      "generator": "url"
+    }
+  },
+  "addons": ["redis", "mysql"]
+}
