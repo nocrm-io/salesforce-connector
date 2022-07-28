@@ -12,6 +12,14 @@
     "APP_URL": {
       "description": "Public URL of the application",
       "generator": "url"
+    },
+    "SALESFORCE_CONSUMER_KEY": {
+      "description": "Your Salesforce app consumer key",
+      "value": "Paste your Salesforce app consumer key here"
+    },
+    "SALESFORCE_CONSUMER_SECRET": {
+      "description": "Your Salesforce app consumer secret",
+      "value": "Paste your Salesforce appconsumer secret here"
     }
   },
   "addons": ["redis", "mysql"]
