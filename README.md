@@ -23,7 +23,7 @@ to Salesforce ones.
 
 Try it yourself !
 
-[![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/nocrm-io/salesforce-connector)
+[![Deploy on Scalingo](https://cdn.scalingo.com/deploy/button.svg)](https://my.scalingo.com/deploy?source=https://github.com/nocrm-io/salesforce-connector#main)
 
 ### Environment
 
