@@ -1,8 +1,9 @@
-# README
-
+# noCRM-Salesforce connector - README
 This project is a web application that allows you to synchronize a [noCRM](https://www.nocrm.io) account
-with a Salesforce account. You can map your lead fields and your sales pipeline step
-to Salesforce ones.
+with a Salesforce account.
+The web application will stand in the middle of your noCRM and your Salesforce account. It will allow you to map your lead fields and your sales pipeline step from noCRM to Salesforce ones.
+
+Please [read this post](https://www.nocrm.io/resource/how-to-reduce-salesforce-licences-cost) before for a more general understanding of the solution and what it can bring to you:
 
 :warning: DISCLAIMER : This project is a proof of concept and not meant to be used in production at this stage
 
@@ -69,3 +70,5 @@ and these two commands to automatically recompile the assets
 yarn build --watch
 yarn build:css --watch
 ```
+
+![Salesforce-noCRM connector](https://ydncrm-www.s3.us-east-1.amazonaws.com/ressources/posts/salesforce/salesforce-no-crm-integration.jpg)
